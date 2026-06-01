@@ -3,7 +3,7 @@ const scale = 3;
 /**
  * THIS IS THE FUCKING LIST SIZE CHANGE THIS WHENEVER YOU ADD NEW LEVELS HOLY FUCKING SHIT REMEMBER TO CHANGE IT OR WE WILL ALL DIE
  */
-const LIST_SIZE = 13;
+const LIST_SIZE = 14;
 
 /**
  * Calculate score based on rank in a fixed list
