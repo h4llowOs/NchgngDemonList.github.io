@@ -1,25 +1,34 @@
 const scale = 3;
 
 /**
- * CHANGE WHEN LIST CHANGES OR WE WILL ALL FUCKING DIE
+ * CHANGE WHEN THE LIST CHANGES OR WE WILL ALL FUCKING DIE DUDE
  */
 const LIST_SIZE = 13;
 
 /**
- * minimum fraction of max score that bottom level can give
- * (0.1 = 10% of top score)
+ * minimum fraction of max score for bottom level
  */
 const BOTTOM_FLOOR = 0.12;
+
+/**
+ * how "top-heavy" the list is
+ * lower = smoother top (recommended 0.3–0.6)
+ */
+const CURVE = 0.45;
 
 export function score(rank, percent, minPercent) {
     if (!LIST_SIZE || LIST_SIZE <= 1) return 0;
 
     const t = (rank - 1) / (LIST_SIZE - 1);
 
-    // base curve (top-heavy but not extreme)
-    let baseScore = 200 * (1 - Math.pow(t, 0.6));
+    // blended curve:
+    // linear reduces harsh early drop
+    // power keeps overall ranking shape
+    const curved = (1 - CURVE) * (1 - t) + CURVE * (1 - Math.pow(t, 0.6));
 
-    // enforce bottom floor so lowest level still gives points
+    let baseScore = 200 * curved;
+
+    // bottom safety floor
     const minScore = 200 * BOTTOM_FLOOR;
     baseScore = Math.max(baseScore, minScore);
 
