@@ -1,50 +1,50 @@
 /**
- * Numbers of decimal digits to round to
+ * decimal precision
  */
 const scale = 3;
 
 /**
- * Calculate the score awarded when having a certain percentage on a list level
- * @param {Number} rank Position on the list
- * @param {Number} percent Percentage of completion
- * @param {Number} minPercent Minimum percentage required
+ * Calculate score based on rank in a dynamic list
+ * @param {Number} rank - 1-based position in list
+ * @param {Number} percent - completion percent
+ * @param {Number} minPercent - minimum required percent
+ * @param {Number} listSize - total number of levels in list
  * @returns {Number}
  */
-export function score(rank, percent, minPercent) {
-    if (rank > 150) {
-        return 0;
-    }
-    if (rank > 75 && percent < 100) {
-        return 0;
-    }
+export function score(rank, percent, minPercent, listSize) {
+    if (!listSize || listSize <= 0) return 0;
 
-    // Old formula
-    /*
-    let score = (100 / Math.sqrt((rank - 1) / 50 + 0.444444) - 50) *
-        ((percent - (minPercent - 1)) / (100 - (minPercent - 1)));
-    */
-    // New formula
-    let score = (-24.9975*Math.pow(rank-1, 0.4) + 200) *
-        ((percent - (minPercent - 1)) / (100 - (minPercent - 1)));
+    // normalize rank (0 = top, 1 = bottom)
+    const t = (rank - 1) / (listSize - 1 || 1);
+
+    // curved difficulty scaling (tweak exponent if needed)
+    const baseScore = 200 - 200 * Math.pow(t, 0.6);
+
+    // progress factor
+    const progress =
+        (percent - (minPercent - 1)) /
+        (100 - (minPercent - 1));
+
+    let score = baseScore * progress;
 
     score = Math.max(0, score);
 
-    if (percent != 100) {
-        return round(score - score / 3);
+    // partial completion penalty (same behavior as yours)
+    if (percent !== 100) {
+        score -= score / 3;
     }
 
-    return Math.max(round(score), 0);
+    return round(Math.max(score, 0));
 }
 
 export function round(num) {
     if (!('' + num).includes('e')) {
         return +(Math.round(num + 'e+' + scale) + 'e-' + scale);
     } else {
-        var arr = ('' + num).split('e');
-        var sig = '';
-        if (+arr[1] + scale > 0) {
-            sig = '+';
-        }
+        const arr = ('' + num).split('e');
+        let sig = '';
+        if (+arr[1] + scale > 0) sig = '+';
+
         return +(
             Math.round(+arr[0] + 'e' + sig + (+arr[1] + scale)) +
             'e-' +
