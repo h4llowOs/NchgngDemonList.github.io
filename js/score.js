@@ -3,7 +3,7 @@ const scale = 3;
 const LIST_SIZE = 13;
 
 const MIN_FLOOR = 0.05;
-const DIFFICULTY = 3.2; 
+const DIFFICULTY = 2.5; 
 
 export function score(rank, percent, minPercent) {
     if (!LIST_SIZE || LIST_SIZE <= 1) return 0;
