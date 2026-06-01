@@ -1,35 +1,17 @@
-import fs from "fs";
-
 const scale = 3;
 
-// cache so we don’t read file every call
-let cachedListSize = null;
-
-function getListSize() {
-    if (cachedListSize !== null) return cachedListSize;
-
-    try {
-        const raw = fs.readFileSync("./data/_list.json", "utf8");
-        const list = JSON.parse(raw);
-
-        cachedListSize = Array.isArray(list) ? list.length : 0;
-    } catch (e) {
-        cachedListSize = 0;
-    }
-
-    return cachedListSize;
-}
+/**
+ * THIS IS THE FUCKING LIST SIZE CHANGE THIS WHENEVER YOU ADD NEW LEVELS HOLY FUCKING SHIT REMEMBER TO CHANGE IT OR WE WILL ALL DIE
+ */
+const LIST_SIZE = 13;
 
 /**
- * Calculate score based on dynamic list size
+ * Calculate score based on rank in a fixed list
  */
 export function score(rank, percent, minPercent) {
-    const listSize = getListSize();
+    if (!LIST_SIZE || LIST_SIZE <= 1) return 0;
 
-    if (listSize <= 1) return 0;
-
-    // normalize rank (0 = top, 1 = bottom)
-    const t = (rank - 1) / (listSize - 1);
+    const t = (rank - 1) / (LIST_SIZE - 1);
 
     const baseScore = 200 * (1 - Math.pow(t, 0.6));
 
