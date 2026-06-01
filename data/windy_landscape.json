@@ -8,5 +8,13 @@
     "showcase": "https://www.youtube.com/watch?v=hTX0Ch5bgMw",
     "percentToQualify": 100,
     "password": "Free to Copy",
-    "records": []
+    "records": [
+                {
+            "user": "Micah",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false,
+            "link": "https://youtu.be/rtp3ZE46ByM"
+        }
+    ]
 }
