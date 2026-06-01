@@ -1,19 +1,27 @@
 const scale = 3;
 
 /**
- * THIS IS THE FUCKING LIST SIZE CHANGE THIS WHENEVER YOU ADD NEW LEVELS HOLY FUCKING SHIT REMEMBER TO CHANGE IT OR WE WILL ALL DIE
+ * CHANGE WHEN LIST CHANGES OR WE WILL ALL FUCKING DIE
  */
-const LIST_SIZE = 14;
+const LIST_SIZE = 13;
 
 /**
- * Calculate score based on rank in a fixed list
+ * minimum fraction of max score that bottom level can give
+ * (0.1 = 10% of top score)
  */
+const BOTTOM_FLOOR = 0.12;
+
 export function score(rank, percent, minPercent) {
     if (!LIST_SIZE || LIST_SIZE <= 1) return 0;
 
     const t = (rank - 1) / (LIST_SIZE - 1);
 
-    const baseScore = 200 * (1 - Math.pow(t, 0.6));
+    // base curve (top-heavy but not extreme)
+    let baseScore = 200 * (1 - Math.pow(t, 0.6));
+
+    // enforce bottom floor so lowest level still gives points
+    const minScore = 200 * BOTTOM_FLOOR;
+    baseScore = Math.max(baseScore, minScore);
 
     const progress =
         (percent - (minPercent - 1)) /
@@ -32,16 +40,15 @@ export function score(rank, percent, minPercent) {
 
 export function round(num) {
     if (!("" + num).includes("e")) {
-        return +(Math.round(num + "e+" + scale) + "e-" + scale);
+        return +(Math.round(num + "e+3") + "e-3");
     } else {
         const arr = ("" + num).split("e");
         let sig = "";
-        if (+arr[1] + scale > 0) sig = "+";
+        if (+arr[1] + 3 > 0) sig = "+";
 
         return +(
-            Math.round(+arr[0] + "e" + sig + (+arr[1] + scale)) +
-            "e-" +
-            scale
+            Math.round(+arr[0] + "e" + sig + (+arr[1] + 3)) +
+            "e-3"
         );
     }
 }
