@@ -1,0 +1,44 @@
+.page-upcoming {
+    padding: 2rem;
+}
+
+.page-upcoming .upcoming-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.page-upcoming h1 {
+    margin-bottom: 2rem;
+}
+
+.page-upcoming .upcoming-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: auto;
+}
+
+.page-upcoming .upcoming-table th,
+.page-upcoming .upcoming-table td {
+    padding: 1rem;
+    text-align: left;
+}
+
+.page-upcoming .upcoming-table thead tr {
+    border-bottom: 2px solid var(--color-primary);
+}
+
+.page-upcoming .upcoming-table tbody tr {
+    border-bottom: 1px solid var(--color-outline);
+}
+
+.page-upcoming .upcoming-table tbody tr:hover {
+    background: var(--color-background-hover);
+}
+
+.page-upcoming .predicted-rank {
+    font-weight: 700;
+}
+
+.page-upcoming .progress {
+    color: var(--color-primary);
+}
