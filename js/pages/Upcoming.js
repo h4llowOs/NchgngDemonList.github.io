@@ -1,6 +1,6 @@
-import { store } from "../main.js";[cite: 14]
-import { embed } from "../util.js";[cite: 12]
-import { fetchEditors, fetchUpcoming } from "../content.js";[cite: 13]
+import { store } from "../main.js";
+import { embed } from "../util.js";
+import { fetchEditors, fetchUpcoming } from "../content.js";
 
 import Spinner from "../components/Spinner.js";
 import LevelAuthors from "../components/List/LevelAuthors.js";
@@ -38,10 +38,8 @@ export default {
             <div class="level-container">
                 <div class="level" v-if="level">
                     <h1>{{ level.level }}</h1>
-                    <!-- Reusing LevelAuthors: mapping creator and player fields -->
                     <LevelAuthors :author="level.creator || 'Unknown'" :creators="[]" :verifier="level.player || 'Unknown'"></LevelAuthors>
                     
-                    <!-- Fallback if no video showcase/verification is provided in the JSON entry -->
                     <iframe v-if="level.verification || level.showcase" class="video" id="videoframe" :src="video" frameborder="0"></iframe>
                     
                     <ul class="stats">
@@ -92,7 +90,7 @@ export default {
                         <h3>List Editors</h3>
                         <ol class="editors">
                             <li v-for="editor in editors">
-                                <img :src="\`/assets/\${roleIconMap[editor.role]}\${store.dark ? '-dark' : ''}.svg\`" :alt="editor.role">
+                                <img :src="'/assets/' + roleIconMap[editor.role] + (store.dark ? '-dark' : '') + '.svg'" :alt="editor.role">
                                 <a v-if="editor.link" class="type-label-lg link" target="_blank" :href="editor.link">{{ editor.name }}</a>
                                 <p v-else>{{ editor.name }}</p>
                             </li>
@@ -143,13 +141,12 @@ export default {
         video() {
             if (!this.level) return '';
             const videoUrl = this.level.showcase || this.level.verification || '';
-            return embed(videoUrl);[cite: 12]
+            return embed(videoUrl);
         },
     },
     async mounted() {
-        // Fetch upcoming data array directly
-        this.list = await fetchUpcoming();[cite: 13]
-        this.editors = await fetchEditors();[cite: 13]
+        this.list = await fetchUpcoming();
+        this.editors = await fetchEditors();
 
         if (!this.list) {
             this.errors = [
@@ -167,6 +164,6 @@ export default {
         this.loading = false;
     },
     methods: {
-        embed,[cite: 12]
+        embed,
     },
 };
