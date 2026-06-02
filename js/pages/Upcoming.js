@@ -1,11 +1,6 @@
-import Spinner from '../components/Spinner.js';
-
 export default {
     template: `
-        <main v-if="loading">
-            <Spinner />
-        </main>
-        <main v-else class="page-list">
+        <main class="page-list">
             <!-- Left Sidebar Navigation -->
             <div class="list-nav">
                 <button 
@@ -33,20 +28,7 @@ export default {
                             <td><strong>VERIFIER</strong></td>
                             <td>{{ currentItem.player }}</td>
                         </tr>
-                        <tr v-if="currentItem.publisher">
-                            <td><strong>PUBLISHER</strong></td>
-                            <td>{{ currentItem.publisher }}</td>
-                        </tr>
                     </table>
-                </div>
-
-                <!-- Video Embed Section (If applicable) -->
-                <div class="video-container" v-if="currentItem.ytId">
-                    <iframe 
-                        :src="'https://www.youtube.com/embed/' + currentItem.ytId" 
-                        frameborder="0" 
-                        allowfullscreen>
-                    </iframe>
                 </div>
 
                 <!-- Technical Stats Grid -->
@@ -65,7 +47,7 @@ export default {
                     </div>
                 </div>
 
-                <!-- Records Display Area -->
+                <!-- Records Display Area (Upcoming Top 1s) -->
                 <div class="records-section">
                     <h2>Records</h2>
                     <p class="qualification-text">100% or better to qualify</p>
@@ -78,11 +60,13 @@ export default {
                     </div>
                 </div>
             </div>
+            
+            <!-- Fallback if JSON data is empty -->
+            <div class="list-content" v-else-if="!loading && upcoming.length === 0">
+                <p style="padding: 2rem; text-align: center;">No upcoming levels listed.</p>
+            </div>
         </main>
     `,
-    components: {
-        Spinner
-    },
     data() {
         return {
             upcoming: [],
@@ -98,13 +82,19 @@ export default {
     async mounted() {
         try {
             const response = await fetch('./data/upcoming.json');[cite: 1]
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
             const data = await response.json();[cite: 1]
             
-            // Sort items by rank sequentially before loading
-            this.upcoming = data.sort((a, b) => a.rank - b.rank);
+            if (Array.isArray(data)) {
+                // Sort items numerically by rank sequence so it matches the list order
+                this.upcoming = data.sort((a, b) => (a.rank || 0) - (b.rank || 0));
+            }
         } catch (error) {
-            console.error("Error loading upcoming list:", error);
+            console.error("Error loading upcoming list data:", error);
         } finally {
+            // Safety trigger: Stops loading state no matter what, preventing an infinite spinner/freeze
             this.loading = false;
         }
     }
