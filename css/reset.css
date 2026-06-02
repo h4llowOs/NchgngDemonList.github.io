@@ -70,3 +70,31 @@ dd {
 iframe {
     border: none;
 }
+/* Fix for the compressed and wrapping records table */
+.page-list .level-container .level .records {
+    table-layout: auto !important; /* Forces columns to size naturally based on content */
+    width: 100%;
+}
+
+.page-list .level-container .level .records tr td:not(:last-child) {
+    padding-right: 1.5rem; /* Adds breathing room between data blocks */
+}
+
+.page-list .level-container .level .records .percent {
+    text-align: end;
+    white-space: nowrap !important; /* ABSOLUTELY stops the runs from stacking into separate lines */
+}
+
+.page-list .level-container .level .records .user {
+    width: 100%;
+}
+
+.page-list .level-container .level .records .hz {
+    text-align: end;
+}
+
+.page-list .level-container .level .records .percent,
+.page-list .level-container .level .records .user,
+.page-list .level-container .level .records .hz {
+    padding-block: 1rem;
+}
