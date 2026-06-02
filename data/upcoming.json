@@ -16,7 +16,7 @@
         "player": "h4llow",
         "points": 95,
         "placement": "#762",
-        "progress": "92% (33-100%, 27-88%)",
+        "progress": "92, 33-100, 27-88",
         "verification": "https://www.youtube.com/watch?v=LImo1W8TBM8&t=1583s"
     },
     {
@@ -26,7 +26,7 @@
         "player": "M4dd3r",
         "points": 90,
         "placement": "#772",
-        "progress": "95%",
+        "progress": "95",
         "verification": "https://www.youtube.com/watch?v=pkvupweIpPc"
     },
     {
@@ -36,7 +36,7 @@
         "player": "h4llow",
         "points": 85,
         "placement": "#1087",
-        "progress": "59-100%, 47-92%",
+        "progress": "59-100, 47-92",
         "verification": "https://www.youtube.com/watch?v=pkvupweIpPc"
     },
     {
@@ -46,7 +46,7 @@
         "player": "M4dd3r",
         "points": 80,
         "placement": "#1356, ",
-        "progress": "86%",
+        "progress": "86",
         "verification": "https://www.youtube.com/watch?v=pkvupweIpPc"
     },
     {
@@ -56,7 +56,7 @@
         "player": "Malikoonium",
         "points": 75,
         "placement": "#1410",
-        "progress": "87%, 50-100%",
+        "progress": "87, 50-100",
         "verification": "https://www.youtube.com/watch?v=pkvupweIpPc"
     },
     {
@@ -66,7 +66,7 @@
         "player": "purple neiro geometry dash",
         "points": 70,
         "placement": "NAED, 19.04 GDDL",
-        "progress": "59-100%",
+        "progress": "59-100",
         "verification": "https://www.youtube.com/watch?v=pkvupweIpPc"
     }
 ]
