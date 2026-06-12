@@ -100,8 +100,11 @@ export default {
                     </template>
                     <h3>Submission Requirements</h3>
                     <p>
-                        Achieved the record without using hacks (however, FPS bypass is allowed, up to 360fps)
+                        Achieved the record without using hacks (however, FPS bypass is allowed, up to any fps)
                     </p>
+                    <p>
+                    Forward from the date of June 12th 2026, we will no longer be accepting records that have no recording and do not follow the requirements.
+                     </p>
                     <p>
                         Achieved the record on the level that is listed on the site - please check the level ID before you submit a record
                     </p>
