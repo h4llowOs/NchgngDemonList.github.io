@@ -106,6 +106,15 @@ export default {
                     Forward from the date of June 12th 2026, we will no longer be accepting records that have no recording and do not follow the requirements.
                      </p>
                     <p>
+                       CBF may be utilized for records, but tps bypass is strictly prohibited.
+                     </p>
+                    <p>
+                       If no progress is made on an upcoming level in over 2 weeks, it will be removed from the list (Only applies to levels without significant progress of 70% or more)
+                     </p>
+                    <p>
+                      Unrated / Shitty levels may be added to the list, but only if their original version is not on the list. Submit levels to be added via the Discord.
+                     </p>
+                    <p>
                         Achieved the record on the level that is listed on the site - please check the level ID before you submit a record
                     </p>
                     <p>
