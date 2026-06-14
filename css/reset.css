@@ -98,3 +98,12 @@ iframe {
 .page-list .level-container .level .records .hz {
     padding-block: 1rem;
 }
+
+/* my life mny rules my style my attitude */
+.nav-title, 
+.header h1, 
+.nav-container h1 { 
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    min-width: max-content;
+}
