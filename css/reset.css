@@ -1,21 +1,15 @@
-*,
-*::before,
-*::after {
+*, *::before, *::after {
     box-sizing: border-box;
 }
 
-html,
-body,
-ol,
-ul {
+html, body, ol, ul {
     margin: 0;
     padding: 0;
     border: 0;
     font: inherit;
 }
 
-ol,
-ul {
+ol, ul {
     list-style: none;
 }
 
@@ -28,15 +22,11 @@ td {
     padding: 0;
 }
 
-blockquote,
-q {
+blockquote, q {
     quotes: none;
 }
 
-blockquote::before,
-blockquote::after,
-q::before,
-q::after {
+blockquote::before, blockquote::after, q::before, q::after {
     content: none;
 }
 
@@ -49,20 +39,11 @@ img {
     display: block;
 }
 
-input,
-button {
+input, button {
     color: inherit;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-dl,
-dd {
+h1, h2, h3, h4, h5, h6, p, dl, dd {
     margin: 0;
     font-weight: normal;
 }
@@ -70,14 +51,29 @@ dd {
 iframe {
     border: none;
 }
-/* Fix for the compressed and wrapping records table */
+
+/* ==========================================
+   mylife my rules mny style my attitude
+   ========================================== */
+
+/* 1. fix for the main site header/title stacking */
+.nav > a,
+.nav a:first-child,
+.nav h1 {
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    display: inline-block !important;
+    word-break: keep-all !important;
+}
+
+/* 2. records table collapse fix */
 .page-list .level-container .level .records {
-    table-layout: auto !important; /* Forces columns to size naturally based on content */
+    table-layout: auto !important; /* forces columns to size naturally based on content */
     width: 100%;
 }
 
 .page-list .level-container .level .records tr td:not(:last-child) {
-    padding-right: 1.5rem; /* Adds breathing room between data blocks */
+    padding-right: 1.5rem; /* adds room between data blocks */
 }
 
 .page-list .level-container .level .records .percent {
@@ -97,13 +93,4 @@ iframe {
 .page-list .level-container .level .records .user,
 .page-list .level-container .level .records .hz {
     padding-block: 1rem;
-}
-
-/* my life mny rules my style my attitude */
-.nav-title, 
-.header h1, 
-.nav-container h1 { 
-    white-space: nowrap !important;
-    flex-shrink: 0 !important;
-    min-width: max-content;
 }
