@@ -1,3 +1,6 @@
+/* complete rewrites : 2
+1. patch the lower site size
+2. fix collapsing site size */
 :root {
     --color-background: white;
     --color-on-background: black;
@@ -9,8 +12,7 @@
     --color-on-error: white;
 }
 
-main.dark,
-header.dark {
+main.dark, header.dark {
     color-scheme: dark;
     --color-background: #1c1b1f;
     --color-on-background: white;
@@ -23,8 +25,7 @@ header.dark {
     --color-on-error: white;
 }
 
-html,
-body {
+html, body {
     height: 100%;
 }
 
@@ -34,15 +35,12 @@ body {
     margin: 0;
 }
 
-header,
-main {
+/* changed layout columns to give the title auto-adjusting space instead of a rigid 16rem block */
+header, main {
     background-color: var(--color-background);
     color: var(--color-on-background);
     display: grid;
-    grid-template-columns: minmax(16rem, 1fr) minmax(16rem, 2fr) minmax(
-            16em,
-            1fr
-        );
+    grid-template-columns: max-content minmax(16rem, 2fr) minmax(16rem, 1fr);
     column-gap: 2rem;
 }
 
@@ -52,20 +50,34 @@ header {
     height: 4rem;
     background-color: var(--color-primary);
     color: var(--color-on-primary);
+    align-items: center; /* Keeps everything vertically centered */
 }
+
 @media screen and (min-width: 1366px) {
     header {
         display: grid;
         padding-inline: 0;
     }
 }
+
+/* force the logo/title container to not squeeze its text content, like a puh */
 header .logo {
-    justify-self: end;
+    justify-self: start;
     align-self: center;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     gap: 1rem;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
 }
+
+/* fix text properties for the list name link directly */
+header .logo a, 
+header .logo span {
+    white-space: nowrap !important;
+    display: inline-block !important;
+}
+
 header .nav {
     flex: 1;
 }
@@ -77,6 +89,7 @@ main {
     grid-template-rows: minmax(0, 1fr);
     column-gap: 2rem;
 }
+
 main > div {
     overflow-y: auto;
 }
