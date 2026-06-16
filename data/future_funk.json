@@ -17,11 +17,18 @@
             "link": "https://www.youtube.com/watch?v=x0K6xsu12q4"
         },
            {
+            "user": "Goober",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false,
+            "link": "https://www.youtube.com/watch?v=2CZM4Oi_hdA"
+        },
+           {
             "user": "h4llow",
             "percent": 91,
             "hz": "360",
             "mobile": false,
-            "link": "https://www.youtube.com/watch?v=x0K6xsu12q4"
+            "link": "https://www.youtube.com/watch?v=2CZM4Oi_hdA"
         }
     ]
 }
