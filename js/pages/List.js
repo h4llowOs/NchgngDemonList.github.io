@@ -13,6 +13,26 @@ const roleIconMap = {
     trial: "user-lock",
 };
 
+// Helper function placed outside the component to protect the regex from template strings
+function getThumbnailUrl(level) {
+    if (!level) return null;
+    
+    // 1. Check if a custom thumbnail link exists in the JSON data
+    if (level.thumbnail && level.thumbnail.trim() !== "") {
+        return level.thumbnail;
+    }
+    
+    // 2. Fallback to extracting the YouTube ID if no custom image is set
+    const videoUrl = level.verification || level.showcase;
+    if (!videoUrl) return null;
+    
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    const match = videoUrl.match(regExp);
+    const videoId = (match && match[2].length === 11) ? match[2] : null;
+    
+    return videoId ? `https://img.youtube.com/vi/${videoId}/mqdefault.jpg` : null;
+}
+
 export default {
     components: { Spinner, LevelAuthors },
     template: `
@@ -28,12 +48,10 @@ export default {
                     </div>
                     <div class="card-body-wrapper">
                         <div class="card-main-content">
-                            
                             <div class="card-thumbnail">
                                 <img v-if="level && getThumb(level)" :src="getThumb(level)" alt="Thumbnail">
                                 <div v-else class="thumb-error">Error</div>
                             </div>
-                            
                             <div class="card-info">
                                 <h3 class="card-title">{{ level?.name || \`Error (\${err}.json)\` }}</h3>
                                 <p class="card-author" v-if="level">by {{ level.author }}</p>
@@ -173,24 +191,8 @@ export default {
     methods: {
         embed,
         score,
-        // Helper function to return custom thumbnail or fallback to YouTube dynamic thumbnail
         getThumb(level) {
-            if (!level) return null;
-            
-            // 1. Check if a custom thumbnail link exists in the JSON data
-            if (level.thumbnail && level.thumbnail.trim() !== "") {
-                return level.thumbnail;
-            }
-            
-            // 2. Fallback to extracting the YouTube ID if no custom image is set
-            const videoUrl = level.verification || level.showcase;
-            if (!videoUrl) return null;
-            
-            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-            const match = videoUrl.match(regExp);
-            const videoId = (match && match[2].length === 11) ? match[2] : null;
-            
-            return videoId ? `https://img.youtube.com/vi/${videoId}/mqdefault.jpg` : null;
+            return getThumbnailUrl(level);
         }
     },
 };
