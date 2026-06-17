@@ -159,7 +159,8 @@ export default {
         errors: [],
         roleIconMap,
         store,
-        showMeta: true
+        showMeta: true,
+        toggledShowcase: true // Added this missing property back to prevent the crash
     }),
     computed: {
         level() {
