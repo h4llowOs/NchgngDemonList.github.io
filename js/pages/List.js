@@ -1,196 +1,318 @@
-import { store } from "../main.js";
-import { embed } from "../util.js";
-import { score } from "../score.js";
-import { fetchEditors, fetchList } from "../content.js";
+/* Unify all layout styling fonts uniformly to target bugs */
+.page-list, 
+.page-list * {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+}
 
-import Spinner from "../components/Spinner.js";
-import LevelAuthors from "../components/List/LevelAuthors.js";
+.page-list {
+    display: flex;
+    width: 100%;
+}
 
-const roleIconMap = {
-    owner: "crown",
-    admin: "user-gear",
-    helper: "user-shield",
-    dev: "code",
-    trial: "user-lock",
-};
+.page-list .list-container, .page-list .level-container, .page-list .meta-container { 
+    padding-block: 2rem; 
+} 
 
-export default {
-    components: { Spinner, LevelAuthors },
-    template: `
-        <main v-if="loading">
-            <Spinner></Spinner>
-        </main>
-        <main v-else class="page-list">
-            <div class="list-container">
-                <table class="list" v-if="list">
-                    <tr v-for="([level, err], i) in list">
-                        <td class="rank">
-                            <p v-if="i + 1 <= 150" class="type-label-lg">#{{ i + 1 }}</p>
-                            <p v-else class="type-label-lg">Legacy</p>
-                        </td>
-                        <td class="level" :class="{ 'active': selected == i, 'error': !level }">
-                            <button @click="selected = i">
-                                <span class="type-label-lg">{{ level?.name || \`Error (\${err}.json)\` }}</span>
-                            </button>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            <div class="level-container">
-                <div class="level" v-if="level">
-                    <h1>{{ level.name }}</h1>
-                    <LevelAuthors :author="level.author" :creators="level.creators" :verifier="level.verifier"></LevelAuthors>
-                    <iframe class="video" id="videoframe" :src="video" frameborder="0"></iframe>
-                    <ul class="stats">
-                        <li>
-                            <div class="type-title-sm">Points when completed</div>
-                            <p>{{ score(selected + 1, 100, level.percentToQualify) }}</p>
-                        </li>
-                        <li>
-                            <div class="type-title-sm">ID</div>
-                            <p>{{ level.id }}</p>
-                        </li>
-                        <li>
-                            <div class="type-title-sm">Password</div>
-                            <p>{{ level.password || 'Free to Copy' }}</p>
-                        </li>
-                    </ul>
-                    <h2>Records</h2>
-                    <p v-if="selected + 1 <= 75"><strong>{{ level.percentToQualify }}%</strong> or better to qualify</p>
-                    <p v-else-if="selected +1 <= 150"><strong>100%</strong> or better to qualify</p>
-                    <p v-else>This level does not accept new records.</p>
-                    <table class="records">
-                        <tr v-for="record in level.records" class="record">
-                            <td class="percent">
-                                <p>{{ record.percent }}%</p>
-                            </td>
-                            <td class="user">
-                                <a :href="record.link" target="_blank" class="type-label-lg">{{ record.user }}</a>
-                            </td>
-                            <td class="mobile">
-                                <img v-if="record.mobile" :src="\`/assets/phone-landscape\${store.dark ? '-dark' : ''}.svg\`" alt="Mobile">
-                            </td>
-                            <td class="hz">
-                                <p>{{ record.hz }}Hz</p>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <div v-else class="level" style="height: 100%; justify-content: center; align-items: center;">
-                    <p>(ノಠ益ಠ)ノ彡┻━┻</p>
-                </div>
-            </div>
-            <div class="meta-container">
-                <div class="meta">
-                    <div class="errors" v-show="errors.length > 0">
-                        <p class="error" v-for="error of errors">{{ error }}</p>
-                    </div>
-                    <div class="og">
-                        <p class="type-label-md">Website layout made by <a href="https://tsl.pages.dev/" target="_blank">TheShittyList</a></p>
-                    </div>
-                    <template v-if="editors">
-                        <h3>List Editors</h3>
-                        <ol class="editors">
-                            <li v-for="editor in editors">
-                                <img :src="\`/assets/\${roleIconMap[editor.role]}\${store.dark ? '-dark' : ''}.svg\`" :alt="editor.role">
-                                <a v-if="editor.link" class="type-label-lg link" target="_blank" :href="editor.link">{{ editor.name }}</a>
-                                <p v-else>{{ editor.name }}</p>
-                            </li>
-                        </ol>
-                    </template>
-                    <h3>Submission Requirements</h3>
-                    <p>
-                        Achieved the record without using hacks (however, FPS bypass is allowed, up to any fps)
-                    </p>
-                    <p>
-                    Forward from the date of June 12th 2026, we will no longer be accepting records that have no recording and do not follow the requirements.
-                     </p>
-                    <p>
-                       CBF may be utilized for records, but tps bypass is strictly prohibited.
-                     </p>
-                    <p>
-                       If no progress is made on an upcoming level in over 2 weeks, it will be removed from the list (Only applies to levels without significant progress of 70% or more)
-                     </p>
-                    <p>
-                      Unrated / Shitty levels may be added to the list, but only if their original version is not on the list. Submit levels to be added via the Discord.
-                     </p>
-                    <p>
-                        Achieved the record on the level that is listed on the site - please check the level ID before you submit a record
-                    </p>
-                    <p>
-                        Have either source audio or clicks/taps in the video. Edited audio only does not count
-                    </p>
-                    <p>
-                        The recording must have a previous attempt and entire death animation shown before the completion, unless the completion is on the first attempt. Everyplay records are exempt from this
-                    </p>
-                    <p>
-                        The recording must also show the player hit the endwall, or the completion will be invalidated.
-                    </p>
-                    <p>
-                        Do not use secret routes or bug routes
-                    </p>
-                    <p>
-                        Do not use easy modes, only a record of the unmodified level qualifies
-                    </p>
-                    <p>
-                        Once a level falls onto the Legacy List, we accept records for it for 24 hours after it falls off, then afterwards we never accept records for said level
-                    </p>
-                </div>
-            </div>
-        </main>
-    `,
-    data: () => ({
-        list: [],
-        editors: [],
-        loading: true,
-        selected: 0,
-        errors: [],
-        roleIconMap,
-        store
-    }),
-    computed: {
-        level() {
-            return this.list[this.selected][0];
-        },
-        video() {
-            if (!this.level.showcase) {
-                return embed(this.level.verification);
-            }
+/* List Sidebar Container (Expanded horizontally) */
+.page-list .list-container { 
+    padding-inline: 1rem; 
+    min-width: 420px;
+    max-width: 500px;
+    width: 100%;
+} 
 
-            return embed(
-                this.toggledShowcase
-                    ? this.level.showcase
-                    : this.level.verification
-            );
-        },
-    },
-    async mounted() {
-        // Hide loading spinner
-        this.list = await fetchList();
-        this.editors = await fetchEditors();
+.page-list .list-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
 
-        // Error handling
-        if (!this.list) {
-            this.errors = [
-                "Failed to load list. Retry in a few minutes or notify list staff.",
-            ];
-        } else {
-            this.errors.push(
-                ...this.list
-                    .filter(([_, err]) => err)
-                    .map(([_, err]) => {
-                        return `Failed to load level. (${err}.json)`;
-                    })
-            );
-            if (!this.editors) {
-                this.errors.push("Failed to load list editors.");
-            }
-        }
+/* Expanded Level Card */
+.page-list .level-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    background-color: var(--color-background);
+    color: var(--color-on-background);
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    user-select: none;
+}
 
-        this.loading = false;
-    },
-    methods: {
-        embed,
-        score,
-    },
-};
+.page-list .level-card:hover {
+    background-color: var(--color-background-hover);
+    color: var(--color-on-background-hover);
+}
+
+.page-list .level-card.active {
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+}
+
+.page-list .level-card.error {
+    color: var(--color-error);
+    cursor: not-allowed;
+    text-decoration: line-through;
+}
+
+/* Card Elements */
+.page-list .card-rank {
+    font-weight: 800;
+    font-size: 1.4rem;
+    min-width: 2.75rem;
+    margin-top: 0.4rem;
+}
+
+.page-list .card-body-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.page-list .card-main-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Enlarged Thumbnail Dimensions */
+.page-list .card-thumbnail {
+    width: 144px;
+    height: 81px;
+    background-color: #000;
+    border-radius: 0.35rem;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.page-list .card-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.page-list .thumb-error {
+    color: #fff;
+    font-size: 0.8rem;
+}
+
+.page-list .card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    overflow: hidden;
+}
+
+.page-list .card-title {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.page-list .card-author,
+.page-list .card-verifier,
+.page-list .card-points {
+    margin: 0;
+    font-size: 0.85rem;
+    opacity: 0.85;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.page-list .card-points {
+    font-weight: 700;
+}
+
+/* Little Tag Bubble Sub-Layout Component */
+.page-list .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    width: 100%;
+}
+
+.page-list .tag-badge {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.2rem 0.55rem;
+    border-radius: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.page-list .level-card.active .tag-badge {
+    background-color: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Level Content Body Container */
+.page-list .level-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.page-list .level-container .level { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 2rem; 
+    padding-inline: 1rem;
+    width: 100%;
+    max-width: 48rem;
+} 
+
+/* Meta Rules Sidebar Container */
+.page-list .meta-container { 
+    position: relative;
+    padding-right: 2rem; 
+    transition: min-width 0.3s ease, max-width 0.3s ease, padding 0.3s ease, width 0.3s ease;
+    min-width: 300px;
+    max-width: 350px;
+    width: 100%;
+} 
+
+.page-list .meta-container.meta-hidden {
+    min-width: 45px; 
+    max-width: 45px;
+    padding-inline: 0;
+    padding-right: 0;
+}
+
+.page-list .meta-container.meta-hidden .meta {
+    display: none;
+}
+
+/* Floating Sidebar Collapse Button */
+.page-list .meta-toggle-btn {
+    position: absolute;
+    top: 2rem;
+    left: -20px; 
+    z-index: 9999; 
+    background-color: var(--color-background, #ffffff);
+    color: var(--color-on-background, #000000);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15), 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.page-list .meta-toggle-btn:hover {
+    background-color: var(--color-background-hover);
+    color: var(--color-on-background-hover);
+}
+
+.page-list .meta-toggle-btn:active {
+    transform: scale(0.95);
+}
+
+.page-list .level-container .level .level-authors { 
+    display: grid; 
+    grid-template-columns: max-content 1fr; 
+    grid-auto-rows: max-content; 
+    gap: 1rem; 
+} 
+
+.page-list .level-container .level .video { 
+    aspect-ratio: 16/9; 
+} 
+
+.page-list .level-container .level .stats { 
+    display: flex; 
+    justify-content: space-evenly; 
+    text-align: center; 
+    gap: 2rem; 
+} 
+
+.page-list .level-container .level .stats li { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    gap: 1rem; 
+} 
+
+.page-list .level-container .level .records { 
+    table-layout: fixed; 
+} 
+
+.page-list .level-container .level .records tr td:not(:last-child) { 
+    padding-right: 1rem; 
+} 
+
+.page-list .level-container .level .records .percent, 
+.page-list .level-container .level .records .user, 
+.page-list .level-container .level .records .hz { 
+    padding-block: 1rem; 
+} 
+
+.page-list .level-container .level .records .user { 
+    width: 100%; 
+} 
+
+.page-list .level-container .level .records .percent, 
+.page-list .level-container .level .records .hz { 
+    text-align: end; 
+} 
+
+.page-list .meta-container .og a:hover, 
+.page-list .level-container .level .records a:hover { 
+    text-decoration: underline; 
+} 
+
+.page-list .meta { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 2rem; 
+} 
+
+.page-list .meta .errors { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 1rem; 
+} 
+
+.page-list .meta .errors .error { 
+    padding: 1rem; 
+    background-color: var(--color-error); 
+    color: var(--color-on-error); 
+    border-radius: 0.5rem; 
+} 
+
+.page-list .meta .editors { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 0.75rem; 
+} 
+
+.page-list .meta .editors li { 
+    display: flex; 
+    align-items: center; 
+    gap: 0.5rem; 
+} 
+
+.page-list .meta .editors li img { 
+    height: 1.25rem; 
+} 
+
+.page-list .meta .editors li a:hover { 
+    text-decoration: underline; 
+}
