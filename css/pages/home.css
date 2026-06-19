@@ -1,4 +1,4 @@
-/* Layout Wrapper */
+/* Layout Positioning */
 .home-container {
     max-width: 960px;
     margin: 4rem auto;
@@ -7,60 +7,63 @@
     flex-direction: column;
     gap: 2.5rem;
     box-sizing: border-box;
+    font-family: 'Lexend Deca', sans-serif;
+    color: #ffffff;
 }
 
-/* Hero Panel Box */
+/* Hero Display Panel Box */
 .hero-section {
     text-align: center;
-    padding: 4.5rem 2rem;
-    background-color: #14181c; /* Matches your structural header panel layout */
+    padding: 5rem 2rem;
+    background-color: #14181c; /* Matches your header block color */
     border-radius: 8px;
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .hero-title {
-    font-size: 3rem;
+    font-size: 3.2rem;
     font-weight: 700;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
     letter-spacing: -0.5px;
 }
 
 .hero-title .accent-text {
-    color: #3b82f6; /* Accent blue matching standard list design */
+    color: #3b82f6; /* Accent blue matching your brand rules */
 }
 
 .hero-subtitle {
-    font-size: 1.15rem;
+    font-size: 1.2rem;
     color: #9ca3af;
     max-width: 580px;
-    margin: 0 auto 2.5rem auto;
+    margin: 0 auto 3rem auto;
     line-height: 1.6;
 }
 
-/* Home Action Buttons */
+/* Home Action Redirect Buttons */
 .hero-actions {
     display: flex;
     justify-content: center;
-    gap: 1rem;
+    gap: 1.25rem;
 }
 
 .home-btn {
-    padding: 0.75rem 1.75rem;
+    padding: 0.85rem 2rem;
     border-radius: 6px;
     font-weight: 700;
     text-decoration: none;
-    font-size: 0.95rem;
+    font-size: 1rem;
     transition: transform 0.15s ease, background-color 0.15s ease;
     display: inline-block;
 }
 
 .home-btn:hover {
-    transform: translateY(-1px);
+    transform: translateY(-2px);
 }
 
 .home-btn-primary {
     background-color: #3b82f6;
-    color: #ffffff;
+    color: #ffffff !important;
 }
 
 .home-btn-primary:hover {
@@ -70,14 +73,14 @@
 .home-btn-secondary {
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #ffffff;
+    color: #ffffff !important;
 }
 
 .home-btn-secondary:hover {
     background: rgba(255, 255, 255, 0.08);
 }
 
-/* Features Block Row */
+/* Feature Grid Row */
 .features-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -85,18 +88,21 @@
 }
 
 .feature-item {
-    padding: 2rem;
+    padding: 2.2rem;
     background-color: #14181c;
     border-radius: 8px;
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .feature-item h3 {
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.85rem;
     color: #ffffff;
+    font-size: 1.3rem;
+    font-weight: 700;
 }
 
 .feature-item p {
     color: #9ca3af;
-    line-height: 1.5;
+    line-height: 1.6;
+    font-size: 0.95rem;
 }
