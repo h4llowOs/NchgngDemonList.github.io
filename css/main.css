@@ -33,15 +33,12 @@ header {
     height: 4.5rem;
     display: flex;
     align-items: flex-end;
-
     justify-content: space-between;
+    gap: 3rem; /* Prevents text and tabs from smashing into each other on small screens */
 
     padding-inline: 3rem;
-
     background: var(--color-primary);
-
     box-shadow: 0 2px 14px rgba(0,0,0,0.35);
-
     position: relative;
 }
 
@@ -52,8 +49,8 @@ header .logo {
 
     font-weight: 600;
     letter-spacing: 0.8px;
-
-    text-transform: lowercase;
+    text-transform: lowercase; /* Forces "nchgng demon list" to be all lowercase */
+    white-space: nowrap; /* Keeps the title on a single line */
 
     padding-bottom: 0.6rem;
 }
@@ -62,47 +59,43 @@ header .logo {
 header .nav {
     display: flex;
     align-items: flex-end;
-    justify-content: flex-end;
-
-    gap: 0;
+    flex: 1; /* Allows the nav container to grow and fill the right side */
+    max-width: 600px; /* Adjust this value to control how wide the tab row spreads */
     height: 100%;
 }
 
 /* TAB STYLE (manilla folder vibe) */
 header .nav a {
     position: relative;
+    flex: 1; /* Forces tabs to share the space completely evenly */
+    text-align: center; /* Centers the text inside the evenly spaced tab */
 
     text-decoration: none;
-
     color: var(--color-on-primary);
 
     font-size: 0.95rem;
     font-weight: 400;
 
-    padding: 0.6rem 1.2rem;
+    padding: 0.6rem 0.5rem; /* Reduced horizontal padding since width is handled by flex */
 
     background: var(--tab-bg);
-
     border: 1px solid var(--tab-border);
     border-bottom: none;
 
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 
-    margin-left: -1px; /* makes them slightly overlap like folders */
+    margin-left: -8px; /* Stronger overlap so they look like stacked folder tabs */
 
     transform: translateY(6px);
-
     opacity: 0.75;
-
     transition: all 0.18s ease;
-
     z-index: 1;
 }
 
-/* evenly spaced "spread" feel */
-header .nav {
-    gap: 0;
+/* Ensures the very first tab doesn't have a negative margin breaking the alignment */
+header .nav a:first-child {
+    margin-left: 0;
 }
 
 /* hover = lift tab */
@@ -117,9 +110,7 @@ header .nav a:hover {
 header .nav a.active {
     opacity: 1;
     background: var(--tab-active);
-
     transform: translateY(0px);
-
     z-index: 10;
 }
 
@@ -130,11 +121,8 @@ header .nav a.active::after {
     left: 10%;
     right: 10%;
     bottom: 0;
-
     height: 2px;
-
     background: rgba(255,255,255,0.6);
-
     border-radius: 2px;
 }
 
