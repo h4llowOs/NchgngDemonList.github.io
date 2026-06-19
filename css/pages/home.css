@@ -1,4 +1,3 @@
-/* Layout Positioning */
 .home-container {
     max-width: 960px;
     margin: 4rem auto;
@@ -11,11 +10,10 @@
     color: #ffffff;
 }
 
-/* Hero Display Panel Box */
 .hero-section {
     text-align: center;
     padding: 5rem 2rem;
-    background-color: #14181c; /* Matches your header block color */
+    background-color: #14181c;
     border-radius: 8px;
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
@@ -29,7 +27,7 @@
 }
 
 .hero-title .accent-text {
-    color: #3b82f6; /* Accent blue matching your brand rules */
+    color: #3b82f6;
 }
 
 .hero-subtitle {
@@ -40,7 +38,6 @@
     line-height: 1.6;
 }
 
-/* Home Action Redirect Buttons */
 .hero-actions {
     display: flex;
     justify-content: center;
@@ -80,7 +77,6 @@
     background: rgba(255, 255, 255, 0.08);
 }
 
-/* Feature Grid Row */
 .features-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
