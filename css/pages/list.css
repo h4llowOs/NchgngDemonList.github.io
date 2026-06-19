@@ -1,20 +1,20 @@
-.page-list, .page-list * {
+.page-upcoming, .page-upcoming * {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
 }
 
-.page-list {
+.page-upcoming {
     display: flex;
     width: 100%;
     min-height: 100vh;
 }
 
-.page-list .list-container, 
-.page-list .level-container, 
-.page-list .meta-container {
+.page-upcoming .list-container, 
+.page-upcoming .level-container, 
+.page-upcoming .meta-container {
     padding-block: 2.5rem;
 }
 
-.page-list .list-container {
+.page-upcoming .list-container {
     padding-inline: 1.5rem;
     min-width: 520px;
     max-width: 580px;
@@ -23,30 +23,30 @@
     overflow-y: auto;
 }
 
-.page-list .list-container::-webkit-scrollbar {
+.page-upcoming .list-container::-webkit-scrollbar {
     width: 6px;
 }
 
-.page-list .list-container::-webkit-scrollbar-track {
+.page-upcoming .list-container::-webkit-scrollbar-track {
     background: transparent;
 }
 
-.page-list .list-container::-webkit-scrollbar-thumb {
+.page-upcoming .list-container::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
 }
 
-.page-list .list-container::-webkit-scrollbar-thumb:hover {
+.page-upcoming .list-container::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 255, 255, 0.2);
 }
 
-.page-list .list-cards {
+.page-upcoming .list-cards {
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
-.page-list .level-card {
+.page-upcoming .level-card {
     display: flex;
     align-items: flex-start;
     gap: 1.25rem;
@@ -56,33 +56,31 @@
     padding: 1.25rem;
     cursor: pointer;
     border: 1px solid rgba(255, 255, 255, 0.03);
-    transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1), 
-                transform 0.15s cubic-bezier(0.4, 0, 0.2, 1),
-                border-color 0.2s ease;
+    transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1), transform 0.15s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.2s ease;
     user-select: none;
 }
 
-.page-list .level-card:hover {
+.page-upcoming .level-card:hover {
     background-color: var(--color-background-hover);
     color: var(--color-on-background-hover);
     border-color: rgba(255, 255, 255, 0.08);
 }
 
-.page-list .level-card.active {
+.page-upcoming .level-card.active {
     background-color: var(--color-primary);
     color: var(--color-on-primary);
     border-color: transparent;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
-.page-list .level-card.error {
+.page-upcoming .level-card.error {
     color: var(--color-error);
     cursor: not-allowed;
     text-decoration: line-through;
     opacity: 0.6;
 }
 
-.page-list .card-rank {
+.page-upcoming .card-rank {
     font-weight: 900;
     font-size: 1.5rem;
     min-width: 3rem;
@@ -90,7 +88,7 @@
     opacity: 0.9;
 }
 
-.page-list .card-body-wrapper {
+.page-upcoming .card-body-wrapper {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
@@ -98,14 +96,14 @@
     overflow: hidden;
 }
 
-.page-list .card-main-content {
+.page-upcoming .card-main-content {
     display: flex;
     align-items: flex-start;
     gap: 1.25rem;
     flex-wrap: wrap;
 }
 
-.page-list .card-thumbnail {
+.page-upcoming .card-thumbnail {
     width: 210px;
     height: 118px;
     background-color: #050505;
@@ -118,19 +116,19 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-.page-list .card-thumbnail img {
+.page-upcoming .card-thumbnail img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.page-list .thumb-error {
+.page-upcoming .thumb-error {
     color: #fff;
     font-size: 0.8rem;
     opacity: 0.5;
 }
 
-.page-list .card-info {
+.page-upcoming .card-info {
     display: flex;
     flex-direction: column;
     gap: 0.3rem;
@@ -139,7 +137,7 @@
     flex-grow: 1;
 }
 
-.page-list .card-title {
+.page-upcoming .card-title {
     margin: 0;
     font-size: 1.25rem;
     font-weight: 800;
@@ -149,9 +147,9 @@
     letter-spacing: -0.02em;
 }
 
-.page-list .card-author, 
-.page-list .card-verifier, 
-.page-list .card-points {
+.page-upcoming .card-author, 
+.page-upcoming .card-verifier, 
+.page-upcoming .card-points {
     margin: 0;
     font-size: 0.9rem;
     opacity: 0.8;
@@ -160,19 +158,19 @@
     text-overflow: ellipsis;
 }
 
-.page-list .card-points {
+.page-upcoming .card-points {
     font-weight: 700;
     opacity: 1;
 }
 
-.page-list .card-tags {
+.page-upcoming .card-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 0.4rem;
     width: 100%;
 }
 
-.page-list .tag-badge {
+.page-upcoming .tag-badge {
     background-color: rgba(255, 255, 255, 0.08);
     color: inherit;
     font-size: 0.75rem;
@@ -183,12 +181,12 @@
     letter-spacing: 0.02em;
 }
 
-.page-list .level-card.active .tag-badge {
+.page-upcoming .level-card.active .tag-badge {
     background-color: rgba(255, 255, 255, 0.2);
     border-color: rgba(255, 255, 255, 0.1);
 }
 
-.page-list .level-container {
+.page-upcoming .level-container {
     flex-grow: 1;
     display: flex;
     justify-content: center;
@@ -196,20 +194,20 @@
     overflow-y: auto;
 }
 
-.page-list .level-container::-webkit-scrollbar {
+.page-upcoming .level-container::-webkit-scrollbar {
     width: 6px;
 }
 
-.page-list .level-container::-webkit-scrollbar-track {
+.page-upcoming .level-container::-webkit-scrollbar-track {
     background: transparent;
 }
 
-.page-list .level-container::-webkit-scrollbar-thumb {
+.page-upcoming .level-container::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
 }
 
-.page-list .level-container .level {
+.page-upcoming .level-container .level {
     display: flex;
     flex-direction: column;
     gap: 2.5rem;
@@ -218,21 +216,21 @@
     max-width: 52rem;
 }
 
-.page-list .level h1 {
+.page-upcoming .level h1 {
     font-size: 2.5rem;
     font-weight: 900;
     letter-spacing: -0.03em;
     margin: 0;
 }
 
-.page-list .level h2 {
+.page-upcoming .level h2 {
     font-size: 1.75rem;
     font-weight: 800;
     letter-spacing: -0.02em;
     margin-bottom: 0.5rem;
 }
 
-.page-list .meta-container {
+.page-upcoming .meta-container {
     position: relative;
     padding-right: 2rem;
     transition: min-width 0.3s cubic-bezier(0.4, 0, 0.2, 1), max-width 0.3s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s ease;
@@ -243,20 +241,20 @@
     overflow-y: auto;
 }
 
-.page-list .meta-container::-webkit-scrollbar {
+.page-upcoming .meta-container::-webkit-scrollbar {
     width: 6px;
 }
 
-.page-list .meta-container::-webkit-scrollbar-track {
+.page-upcoming .meta-container::-webkit-scrollbar-track {
     background: transparent;
 }
 
-.page-list .meta-container::-webkit-scrollbar-thumb {
+.page-upcoming .meta-container::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
 }
 
-.page-list .meta-container.meta-hidden {
+.page-upcoming .meta-container.meta-hidden {
     min-width: 45px;
     max-width: 45px;
     padding-inline: 0;
@@ -264,11 +262,11 @@
     overflow: hidden;
 }
 
-.page-list .meta-container.meta-hidden .meta {
+.page-upcoming .meta-container.meta-hidden .meta {
     display: none;
 }
 
-.page-list .meta-toggle-btn {
+.page-upcoming .meta-toggle-btn {
     position: absolute;
     top: 2.5rem;
     left: -20px;
@@ -288,16 +286,16 @@
     transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
-.page-list .meta-toggle-btn:hover {
+.page-upcoming .meta-toggle-btn:hover {
     background-color: var(--color-background-hover);
     color: var(--color-on-background-hover);
 }
 
-.page-list .meta-toggle-btn:active {
+.page-upcoming .meta-toggle-btn:active {
     transform: scale(0.92);
 }
 
-.page-list .level-container .level .level-authors {
+.page-upcoming .level-container .level .level-authors {
     display: grid;
     grid-template-columns: max-content 1fr;
     grid-auto-rows: max-content;
@@ -308,14 +306,14 @@
     border: 1px solid rgba(255, 255, 255, 0.03);
 }
 
-.page-list .level-container .level .video {
+.page-upcoming .level-container .level .video {
     aspect-ratio: 16/9;
     border-radius: 1rem;
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
     background-color: #000;
 }
 
-.page-list .level-container .level .stats {
+.page-upcoming .level-container .level .stats {
     display: flex;
     justify-content: space-evenly;
     text-align: center;
@@ -326,112 +324,112 @@
     border: 1px solid rgba(255, 255, 255, 0.03);
 }
 
-.page-list .level-container .level .stats li {
+.page-upcoming .level-container .level .stats li {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0.75rem;
 }
 
-.page-list .level-container .level .stats p {
+.page-upcoming .level-container .level .stats p {
     font-size: 1.5rem;
     font-weight: 800;
     margin: 0;
     letter-spacing: -0.01em;
 }
 
-.page-list .level-container .level .records {
+.page-upcoming .level-container .level .records {
     table-layout: fixed;
     border-collapse: separate;
     border-spacing: 0 0.5rem;
 }
 
-.page-list .level-container .level .records tr {
+.page-upcoming .level-container .level .records tr {
     background: rgba(255, 255, 255, 0.01);
     transition: background 0.2s ease;
 }
 
-.page-list .level-container .level .records tr:hover {
+.page-upcoming .level-container .level .records tr:hover {
     background: rgba(255, 255, 255, 0.03);
 }
 
-.page-list .level-container .level .records td {
+.page-upcoming .level-container .level .records td {
     padding: 1rem;
 }
 
-.page-list .level-container .level .records td:first-child {
+.page-upcoming .level-container .level .records td:first-child {
     border-top-left-radius: 0.75rem;
     border-bottom-left-radius: 0.75rem;
     padding-left: 1.25rem;
 }
 
-.page-list .level-container .level .records td:last-child {
+.page-upcoming .level-container .level .records td:last-child {
     border-top-right-radius: 0.75rem;
     border-bottom-right-radius: 0.75rem;
     padding-right: 1.25rem;
 }
 
-.page-list .level-container .level .records .percent {
+.page-upcoming .level-container .level .records .percent {
     font-weight: 800;
     color: var(--color-primary);
 }
 
-.page-list .level-container .level .records .user {
+.page-upcoming .level-container .level .records .user {
     width: 100%;
     font-weight: 600;
 }
 
-.page-list .level-container .level .records .user a {
+.page-upcoming .level-container .level .records .user a {
     color: inherit;
     text-decoration: none;
     transition: opacity 0.2s ease;
 }
 
-.page-list .level-container .level .records .user a:hover {
+.page-upcoming .level-container .level .records .user a:hover {
     opacity: 0.8;
     text-decoration: underline;
 }
 
-.page-list .level-container .level .records .percent, 
-.page-list .level-container .level .records .hz {
+.page-upcoming .level-container .level .records .percent, 
+.page-upcoming .level-container .level .records .hz {
     text-align: end;
 }
 
-.page-list .level-container .level .records .hz {
+.page-upcoming .level-container .level .records .hz {
     font-weight: 600;
     opacity: 0.8;
 }
 
-.page-list .meta-container .og a:hover {
+.page-upcoming .meta-container .og a:hover {
     text-decoration: underline;
 }
 
-.page-list .meta {
+.page-upcoming .meta {
     display: flex;
     flex-direction: column;
     gap: 2.5rem;
 }
 
-.page-list .meta h3 {
+.page-upcoming .meta h3 {
     font-size: 1.35rem;
     font-weight: 800;
     letter-spacing: -0.02em;
     margin-bottom: 0.25rem;
 }
 
-.page-list .meta p {
+.page-upcoming .meta p {
     line-height: 1.5;
     opacity: 0.85;
     font-size: 0.95rem;
 }
 
-.page-list .meta .errors {
+.page-upcoming .meta .errors {
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
-.page-list .meta .errors .error {
+.page-upcoming .meta .errors .error {
     padding: 1.25rem;
     background-color: var(--color-error);
     color: var(--color-on-error);
@@ -440,13 +438,13 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.page-list .meta .editors {
+.page-upcoming .meta .editors {
     display: flex;
     flex-direction: column;
     gap: 0.85rem;
 }
 
-.page-list .meta .editors li {
+.page-upcoming .meta .editors li {
     display: flex;
     align-items: center;
     gap: 0.75rem;
@@ -456,18 +454,18 @@
     border: 1px solid rgba(255, 255, 255, 0.03);
 }
 
-.page-list .meta .editors li img {
+.page-upcoming .meta .editors li img {
     height: 1.35rem;
     width: 1.35rem;
     object-fit: contain;
 }
 
-.page-list .meta .editors li a {
+.page-upcoming .meta .editors li a {
     color: inherit;
     text-decoration: none;
     font-weight: 600;
 }
 
-.page-list .meta .editors li a:hover {
+.page-upcoming .meta .editors li a:hover {
     text-decoration: underline;
 }
