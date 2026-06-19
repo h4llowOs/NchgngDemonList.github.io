@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
 :root {
     --color-background: #121316; 
     --color-on-background: #ffffff;
@@ -8,6 +10,9 @@
     --color-on-primary: #ffffff;
     --color-error: #de0000;
     --color-on-error: #ffffff;
+
+    --tab-active: rgba(255,255,255,0.9);
+    --tab-inactive: rgba(255,255,255,0.65);
 }
 
 main.dark, header.dark {
@@ -33,65 +38,92 @@ body {
     margin: 0;
     background-color: var(--color-background);
     color: var(--color-on-background);
-    font-family: 'Lexend Deca', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 300;
 }
 
+/* HEADER */
 header {
     background-color: var(--color-primary);
     color: var(--color-on-primary);
-    display: flex !important;
-    flex-direction: row;
-    justify-content: space-between;
+
+    display: flex;
     align-items: center;
+    justify-content: space-between;
+
     height: 4.5rem;
     padding-inline: 3rem;
+
     box-sizing: border-box;
-    flex-shrink: 0;
+
+    box-shadow: 0 2px 12px rgba(0,0,0,0.25);
 }
 
-@media screen and (min-width: 1366px) {
-    header {
-        padding-inline: 5rem;
-    }
-}
-
+/* LOGO */
 header .logo {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
-    white-space: nowrap !important;
-    flex-shrink: 0 !important;
-    font-weight: 500;
-    letter-spacing: .5px;
+    gap: 0.75rem;
+
+    font-weight: 600;
+    letter-spacing: 0.6px;
+
+    white-space: nowrap;
 }
 
-header .logo a, header .logo span {
-    white-space: nowrap !important;
-    display: inline-block !important;
-}
-
+/* NAV TABS */
 header .nav {
     display: flex;
-    gap: 2.5rem;
     align-items: center;
-    justify-content: flex-end;
+    gap: 0.5rem;
     flex: 1;
+    justify-content: flex-end;
 }
 
+/* TAB LINKS */
 header .nav a {
+    position: relative;
+
     text-decoration: none;
     color: var(--color-on-primary);
+
+    font-size: 0.95rem;
     font-weight: 400;
-    font-size: .95rem;
-    opacity: .85;
-    transition: opacity .2s ease, transform .2s ease;
+
+    padding: 0.55rem 0.9rem;
+    border-radius: 8px;
+
+    opacity: 0.7;
+
+    transition: all 0.2s ease;
 }
 
+/* hover = subtle tab lift */
 header .nav a:hover {
     opacity: 1;
+    background: rgba(255,255,255,0.08);
+    transform: translateY(-1px);
 }
 
+/* ACTIVE TAB (you add class="active" in html) */
+header .nav a.active {
+    opacity: 1;
+    background: rgba(255,255,255,0.12);
+}
+
+/* underline indicator for active tab */
+header .nav a.active::after {
+    content: "";
+    position: absolute;
+    left: 15%;
+    right: 15%;
+    bottom: 6px;
+    height: 2px;
+    background: var(--tab-active);
+    border-radius: 2px;
+}
+
+/* MAIN LAYOUT */
 main {
     flex: 1;
     display: grid;
@@ -108,12 +140,14 @@ main > div {
     overflow-y: auto;
 }
 
+/* home override */
 main:has(.home-container) {
     display: block !important;
     height: auto !important;
     overflow-y: auto;
 }
 
+/* spinner */
 .spinner {
     display: flex;
     align-items: center;
@@ -121,9 +155,17 @@ main:has(.home-container) {
     grid-column: span 3;
 }
 
+/* checkbox */
 input[type="checkbox"] {
     height: 1.25rem;
     width: 1.25rem;
     cursor: pointer;
     margin: 0;
+}
+
+/* responsive tweak */
+@media screen and (min-width: 1366px) {
+    header {
+        padding-inline: 5rem;
+    }
 }
