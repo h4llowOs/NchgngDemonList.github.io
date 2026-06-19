@@ -1,0 +1,115 @@
+/* Main Homepage Layout */
+.home-container {
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    font-family: 'Lexend Deca', sans-serif;
+    color: #fff; /* Fallback for dark mode text */
+}
+
+/* Hero Section Banner */
+.hero {
+    text-align: center;
+    padding: 6rem 2rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+}
+
+/* Light/Dark dynamic background adjustment */
+.dark .hero {
+    background: rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+.hero__title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    letter-spacing: -1px;
+}
+
+/* Blue Accent color matching your top level styling */
+.hero__title .accent {
+    color: #3b82f6; 
+}
+
+.hero__subtitle {
+    font-size: 1.3rem;
+    color: #9ca3af;
+    max-width: 650px;
+    margin: 0 auto 3rem auto;
+    line-height: 1.6;
+}
+
+/* Call to Action Buttons */
+.hero__buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.btn-home {
+    padding: 0.9rem 2.2rem;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    cursor: pointer;
+}
+
+.btn-home:hover {
+    transform: translateY(-2px);
+}
+
+.btn-home--primary {
+    background-color: #3b82f6;
+    color: #fff;
+}
+
+.btn-home--primary:hover {
+    background-color: #2563eb;
+}
+
+.btn-home--secondary {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #fff;
+}
+
+.btn-home--secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Extra decorative row - Quick Features/Stats */
+.home-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.feature-card {
+    padding: 2.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: center;
+}
+
+.feature-card h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: #f3f4f6;
+}
+
+.feature-card p {
+    font-size: 0.95rem;
+    color: #9ca3af;
+    line-height: 1.5;
+}
