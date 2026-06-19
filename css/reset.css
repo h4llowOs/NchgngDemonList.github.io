@@ -54,11 +54,6 @@ iframe {
     border: none;
 }
 
-/* ==========================================
-   mylife my rules mny style my attitude
-   ========================================== */
-
-/* 1. fix for the main site header/title stacking */
 .nav > a,
 .nav a:first-child,
 .nav h1 {
@@ -68,19 +63,18 @@ iframe {
     word-break: keep-all !important;
 }
 
-/* 2. records table collapse fix */
 .page-list .level-container .level .records {
-    table-layout: auto !important; /* forces columns to size naturally based on content */
+    table-layout: auto !important;
     width: 100%;
 }
 
 .page-list .level-container .level .records tr td:not(:last-child) {
-    padding-right: 1.5rem; /* adds room between data blocks */
+    padding-right: 1.5rem; 
 }
 
 .page-list .level-container .level .records .percent {
     text-align: end;
-    white-space: nowrap !important; /* ABSOLUTELY stops the runs from stacking into separate lines */
+    white-space: nowrap !important; 
 }
 
 .page-list .level-container .level .records .user {
