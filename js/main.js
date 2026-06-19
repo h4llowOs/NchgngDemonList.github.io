@@ -1,8 +1,8 @@
-import * as Vue from 'vue';
-import * as VueRouter from 'vue-router';
+import { reactive, createApp } from 'vue';
+import { createRouter, createWebHashHistory } from 'vue-router';
 import routes from './routes.js';
 
-export const store = Vue.reactive({
+export const store = reactive({
     dark: JSON.parse(localStorage.getItem('dark')) || false,
     toggleDark() {
         this.dark = !this.dark;
@@ -10,12 +10,12 @@ export const store = Vue.reactive({
     },
 });
 
-const app = Vue.createApp({
+const app = createApp({
     data: () => ({ store }),
 });
 
-const router = VueRouter.createRouter({
-    history: VueRouter.createWebHashHistory(),
+const router = createRouter({
+    history: createWebHashHistory(),
     routes,
 });
 
