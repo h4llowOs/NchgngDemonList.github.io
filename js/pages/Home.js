@@ -15,16 +15,16 @@ export default {
 
             <section class="features-grid">
                 <div class="feature-item">
-                    <h3 class="type-headline-sm">Demon Rankings</h3>
-                    <p class="type-body-md">Meticulously ordered by difficulty. Only the most punishing challenges survive here.</p>
+                    <h3>Demon Rankings</h3>
+                    <p>Meticulously ordered by difficulty. Only the most punishing challenges survive here.</p>
                 </div>
                 <div class="feature-item">
-                    <h3 class="type-headline-sm">Community Driven</h3>
-                    <p class="type-body-md">Submit your records via Discord to assert your placement on our official leaderboard.</p>
+                    <h3>Community Driven</h3>
+                    <p>Submit your records via Discord to assert your placement on our official leaderboard.</p>
                 </div>
                 <div class="feature-item">
-                    <h3 class="type-headline-sm">Upcoming Progress</h3>
-                    <p class="type-body-md">Keep track of unrated gems and upcoming projects currently being verified.</p>
+                    <h3>Upcoming Progress</h3>
+                    <p>Keep track of unrated gems and upcoming projects currently being verified.</p>
                 </div>
             </section>
         </div>
