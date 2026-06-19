@@ -109,3 +109,9 @@ input[type="checkbox"] {
     cursor: pointer; 
     margin: 0; 
 }
+
+main:has(.home-container) {
+    display: block !important;
+    height: auto !important;
+    overflow-y: auto;
+}
