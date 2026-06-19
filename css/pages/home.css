@@ -1,115 +1,102 @@
-/* Main Homepage Layout */
+/* Layout Wrapper */
 .home-container {
-    max-width: 1200px;
+    max-width: 960px;
     margin: 4rem auto;
-    padding: 0 2rem;
+    padding: 0 1.5rem;
     display: flex;
     flex-direction: column;
-    gap: 3rem;
-    font-family: 'Lexend Deca', sans-serif;
-    color: #fff; /* Fallback for dark mode text */
+    gap: 2.5rem;
+    box-sizing: border-box;
 }
 
-/* Hero Section Banner */
-.hero {
+/* Hero Panel Box */
+.hero-section {
     text-align: center;
-    padding: 6rem 2rem;
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(10px);
+    padding: 4.5rem 2rem;
+    background-color: #14181c; /* Matches your structural header panel layout */
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Light/Dark dynamic background adjustment */
-.dark .hero {
-    background: rgba(0, 0, 0, 0.2);
-    border-color: rgba(255, 255, 255, 0.05);
-}
-
-.hero__title {
-    font-size: 3.5rem;
+.hero-title {
+    font-size: 3rem;
     font-weight: 700;
-    margin-bottom: 1.5rem;
-    letter-spacing: -1px;
+    margin-bottom: 1rem;
+    letter-spacing: -0.5px;
 }
 
-/* Blue Accent color matching your top level styling */
-.hero__title .accent {
-    color: #3b82f6; 
+.hero-title .accent-text {
+    color: #3b82f6; /* Accent blue matching standard list design */
 }
 
-.hero__subtitle {
-    font-size: 1.3rem;
+.hero-subtitle {
+    font-size: 1.15rem;
     color: #9ca3af;
-    max-width: 650px;
-    margin: 0 auto 3rem auto;
+    max-width: 580px;
+    margin: 0 auto 2.5rem auto;
     line-height: 1.6;
 }
 
-/* Call to Action Buttons */
-.hero__buttons {
+/* Home Action Buttons */
+.hero-actions {
     display: flex;
     justify-content: center;
-    gap: 1.5rem;
+    gap: 1rem;
 }
 
-.btn-home {
-    padding: 0.9rem 2.2rem;
-    border-radius: 8px;
+.home-btn {
+    padding: 0.75rem 1.75rem;
+    border-radius: 6px;
     font-weight: 700;
-    font-size: 1rem;
     text-decoration: none;
-    transition: transform 0.2s ease, background-color 0.2s ease;
-    cursor: pointer;
+    font-size: 0.95rem;
+    transition: transform 0.15s ease, background-color 0.15s ease;
+    display: inline-block;
 }
 
-.btn-home:hover {
-    transform: translateY(-2px);
+.home-btn:hover {
+    transform: translateY(-1px);
 }
 
-.btn-home--primary {
+.home-btn-primary {
     background-color: #3b82f6;
-    color: #fff;
+    color: #ffffff;
 }
 
-.btn-home--primary:hover {
+.home-btn-primary:hover {
     background-color: #2563eb;
 }
 
-.btn-home--secondary {
-    background-color: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    color: #fff;
+.home-btn-secondary {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
 }
 
-.btn-home--secondary:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+.home-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.08);
 }
 
-/* Extra decorative row - Quick Features/Stats */
-.home-features {
+/* Features Block Row */
+.features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 1.5rem;
 }
 
-.feature-card {
-    padding: 2.5rem;
-    background: rgba(255, 255, 255, 0.02);
+.feature-item {
+    padding: 2rem;
+    background-color: #14181c;
     border-radius: 8px;
     border: 1px solid rgba(255, 255, 255, 0.05);
-    text-align: center;
 }
 
-.feature-card h3 {
-    font-size: 1.2rem;
-    font-weight: 700;
+.feature-item h3 {
     margin-bottom: 0.75rem;
-    color: #f3f4f6;
+    color: #ffffff;
 }
 
-.feature-card p {
-    font-size: 0.95rem;
+.feature-item p {
     color: #9ca3af;
     line-height: 1.5;
 }
