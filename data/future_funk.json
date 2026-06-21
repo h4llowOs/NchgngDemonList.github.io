@@ -3,7 +3,7 @@
     "name": "Future Funk",
     "author": "JonathanGD",
     "creators": [],
-    "verifier": "M4dd3r",
+    "verifier": "Goober",
     "verification": "https://www.youtube.com/watch?v=2CZM4Oi_hdA",
     "showcase": "https://www.youtube.com/watch?v=2CZM4Oi_hdA",
     "percentToQualify": 85,
@@ -15,13 +15,6 @@
             "hz": 240,
             "mobile": false,
             "link": "https://www.youtube.com/watch?v=x0K6xsu12q4"
-        },
-           {
-            "user": "Goober",
-            "percent": 100,
-            "hz": 240,
-            "mobile": false,
-            "link": "https://www.youtube.com/watch?v=2CZM4Oi_hdA"
         },
                {
             "user": "lilbinladn",
