@@ -1,5 +1,6 @@
 import Home from './pages/Home.js';
 import List from './pages/List.js';
+import TowerList from './pages/TowerList.js';
 import Leaderboard from './pages/Leaderboard.js';
 import Upcoming from './pages/Upcoming.js';
 
