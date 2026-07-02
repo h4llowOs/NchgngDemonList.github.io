@@ -1,4 +1,4 @@
-[
+ [
     {
         "role": "owner",
         "name": "h4llowOs",
@@ -13,5 +13,10 @@
         "role": "List Editor",
         "name": "LoafOfBread",
         "link": "https://www.youtube.com/@LoafOfBreadGD"
+    }.
+    {
+        "role": "List Editor",
+        "name": "Myro",
+        "link" "https://github.com/myrocubed"
     }
 ]
