@@ -1,104 +1,54 @@
 .home-container {
-    max-width: 960px;
-    margin: 4rem auto;
-    padding: 0 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 2.5rem;
-    box-sizing: border-box;
-    font-family: 'Lexend Deca', sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    font-family: system-ui, -apple-system, sans-serif;
     color: #ffffff;
 }
 
 .hero-section {
-    text-align: center;
-    padding: 5rem 2rem;
-    background-color: #14181c;
-    border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 2rem 0;
+    border-bottom: 1px solid #333333;
+    margin-bottom: 2rem;
 }
 
 .hero-title {
-    font-size: 3.2rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-    color: #ffffff;
-    letter-spacing: -0.5px;
-}
-
-.hero-title .accent-text {
-    color: #3b82f6;
-}
-
-.hero-subtitle {
-    font-size: 1.2rem;
-    color: #9ca3af;
-    max-width: 580px;
-    margin: 0 auto 3rem auto;
-    line-height: 1.6;
+    font-size: 2rem;
+    font-weight: 500;
+    margin: 0 0 1.5rem 0;
 }
 
 .hero-actions {
     display: flex;
-    justify-content: center;
-    gap: 1.25rem;
+    gap: 1rem;
 }
 
 .home-btn {
-    padding: 0.85rem 2rem;
-    border-radius: 6px;
-    font-weight: 700;
+    font-size: 0.9rem;
     text-decoration: none;
-    font-size: 1rem;
-    transition: transform 0.15s ease, background-color 0.15s ease;
-    display: inline-block;
-}
-
-.home-btn:hover {
-    transform: translateY(-2px);
+    color: #ffffff !important;
 }
 
 .home-btn-primary {
-    background-color: #3b82f6;
-    color: #ffffff !important;
-}
-
-.home-btn-primary:hover {
-    background-color: #2563eb;
+    text-decoration: underline;
 }
 
 .home-btn-secondary {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #ffffff !important;
+    opacity: 0.7;
 }
 
 .home-btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.08);
+    opacity: 1;
 }
 
 .features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.5rem;
-}
-
-.feature-item {
-    padding: 2.2rem;
-    background-color: #14181c;
-    border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
 }
 
 .feature-item h3 {
-    margin-bottom: 0.85rem;
-    color: #ffffff;
-    font-size: 1.3rem;
-    font-weight: 700;
-}
-
-.feature-item p {
-    color: #9ca3af;
-    line-height: 1.6;
-    font-size: 0.95rem;
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+    font-weight: 500;
 }
