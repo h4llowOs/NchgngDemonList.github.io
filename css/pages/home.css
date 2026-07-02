@@ -1,21 +1,27 @@
 .home-container {
-    max-width: 800px;
-    margin: 2rem auto;
-    padding: 0 1rem;
-    font-family: system-ui, -apple-system, sans-serif;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 3rem;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     color: #ffffff;
+    background-color: #0b0e11;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
 }
 
 .hero-section {
-    padding: 2rem 0;
-    border-bottom: 1px solid #333333;
-    margin-bottom: 2rem;
+    max-width: 1200px;
+    width: 100%;
 }
 
 .hero-title {
-    font-size: 2rem;
-    font-weight: 500;
+    font-size: 2.5rem;
+    font-weight: 600;
     margin: 0 0 1.5rem 0;
+    letter-spacing: normal;
 }
 
 .hero-actions {
@@ -24,31 +30,50 @@
 }
 
 .home-btn {
-    font-size: 0.9rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 0.95rem;
     text-decoration: none;
-    color: #ffffff !important;
+    transition: background-color 0.1s ease;
+    text-align: center;
 }
 
 .home-btn-primary {
-    text-decoration: underline;
+    background-color: #3b82f6;
+    color: #ffffff !important;
+}
+
+.home-btn-primary:hover {
+    background-color: #1d4ed8;
 }
 
 .home-btn-secondary {
-    opacity: 0.7;
+    background-color: #22252a;
+    border: 1px solid #33373f;
+    color: #ffffff !important;
 }
 
 .home-btn-secondary:hover {
-    opacity: 1;
+    background-color: #2d3139;
 }
 
 .features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.feature-item {
+    padding-top: 1.5rem;
+    border-top: 1px solid #22252a;
 }
 
 .feature-item h3 {
     margin: 0 0 0.5rem 0;
+    color: #ffffff;
     font-size: 1.1rem;
-    font-weight: 500;
+    font-weight: 600;
 }
