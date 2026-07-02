@@ -9,12 +9,18 @@
     background-color: #0b0e11;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 4rem;
 }
 
 .hero-section {
     max-width: 1200px;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .hero-title {
@@ -27,6 +33,7 @@
 .hero-actions {
     display: flex;
     gap: 1rem;
+    justify-content: center;
 }
 
 .home-btn {
@@ -37,24 +44,12 @@
     text-decoration: none;
     transition: background-color 0.1s ease;
     text-align: center;
-}
-
-.home-btn-primary {
-    background-color: #3b82f6;
-    color: #ffffff !important;
-}
-
-.home-btn-primary:hover {
-    background-color: #1d4ed8;
-}
-
-.home-btn-secondary {
     background-color: #22252a;
     border: 1px solid #33373f;
     color: #ffffff !important;
 }
 
-.home-btn-secondary:hover {
+.home-btn:hover {
     background-color: #2d3139;
 }
 
@@ -69,6 +64,7 @@
 .feature-item {
     padding-top: 1.5rem;
     border-top: 1px solid #22252a;
+    text-align: center;
 }
 
 .feature-item h3 {
