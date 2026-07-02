@@ -128,7 +128,7 @@ export default {
                         </ol>
                     </template>
                     <h3>Submission Requirements</h3>
-                    <p>hi</p>
+                    <p>Achieved the completion without using any unintentional skips, including LHJs, laugh clips, etc.</p>
                 </div>
             </div>
         </main>
