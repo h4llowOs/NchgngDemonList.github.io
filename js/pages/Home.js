@@ -13,15 +13,15 @@ export default {
             <section class="features-grid">
                 <div class="feature-item">
                     <h3>Demon Rankings</h3>
-                    <p style="color: #888d96; font-size: 0.9rem; margin: 0; line-height: 1.4;">Levels categorized by overall difficulty.</p>
+                    <p style="color: #888d96; font-size: 0.9rem; margin: 0; line-height: 1.4;">levels organized by difficulty based on the AREDL and GDDL.</p>
                 </div>
                 <div class="feature-item">
                     <h3>Community Leaderboard</h3>
-                    <p style="color: #888d96; font-size: 0.9rem; margin: 0; line-height: 1.4;">Record submission and player placements.</p>
+                    <p style="color: #888d96; font-size: 0.9rem; margin: 0; line-height: 1.4;">record submissions and nch placements.</p>
                 </div>
                 <div class="feature-item">
                     <h3>Upcoming Progress</h3>
-                    <p style="color: #888d96; font-size: 0.9rem; margin: 0; line-height: 1.4;">Tracking upcoming inclusions and changes.</p>
+                    <p style="color: #888d96; font-size: 0.9rem; margin: 0; line-height: 1.4;">upcoming top levels.</p>
                 </div>
             </section>
         </div>
