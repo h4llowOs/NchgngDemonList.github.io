@@ -60,6 +60,17 @@ export async function fetchUpcoming() {
     }
 }
 
+export async function fetchTowerList() {
+    try {
+        const res = await fetch(`${dir}/towerlist.json`);
+        if (!res.ok) return null;
+        return await res.json();
+    } catch (e) {
+        console.error("Failed to load tower list.", e);
+        return null;
+    }
+}
+
 export async function fetchLeaderboard() {
     const list = await fetchList();
 
