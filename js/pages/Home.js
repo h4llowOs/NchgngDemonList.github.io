@@ -6,19 +6,22 @@ export default {
                 <h1 class="hero-title">The nchgng Demon List</h1>
                 <div class="hero-actions">
                     <router-link to="/list" class="home-btn home-btn-primary">Explore List</router-link>
-                    <router-link to="/leaderboard" class="home-btn home-btn-secondary">Leaderboards</router-link>
+                    <router-link to="/leaderboard" class="home-btn home-btn-secondary">View Leaderboards</router-link>
                 </div>
             </section>
 
             <section class="features-grid">
                 <div class="feature-item">
-                    <h3>Rankings</h3>
+                    <h3>Demon Rankings</h3>
+                    <p style="color: #888d96; font-size: 0.9rem; margin: 0; line-height: 1.4;">Levels categorized by overall difficulty.</p>
                 </div>
                 <div class="feature-item">
-                    <h3>Community</h3>
+                    <h3>Community Leaderboard</h3>
+                    <p style="color: #888d96; font-size: 0.9rem; margin: 0; line-height: 1.4;">Record submission and player placements.</p>
                 </div>
                 <div class="feature-item">
-                    <h3>Progress</h3>
+                    <h3>Upcoming Progress</h3>
+                    <p style="color: #888d96; font-size: 0.9rem; margin: 0; line-height: 1.4;">Tracking upcoming inclusions and changes.</p>
                 </div>
             </section>
         </div>
