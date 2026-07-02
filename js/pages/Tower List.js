@@ -1,5 +1,6 @@
 import { store } from "../main.js";
 import { embed } from "../util.js";
+import { towerscore } from "../towerscore.js";
 import { fetchEditors, fetchTowerList } from "../content.js";
 import Spinner from "../components/Spinner.js";
 import LevelAuthors from "../components/List/LevelAuthors.js";
