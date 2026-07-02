@@ -6,6 +6,7 @@ import Upcoming from './pages/Upcoming.js';
 export default [
     { path: '/', component: Home },
     { path: '/list', component: List },
+    { path: '/towerlist', component: TowerList },
     { path: '/leaderboard', component: Leaderboard },
     { path: '/upcoming', component: Upcoming },
 ];
